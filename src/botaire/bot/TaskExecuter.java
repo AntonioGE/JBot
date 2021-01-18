@@ -24,6 +24,7 @@
 package botaire.bot;
 
 import botaire.bot.task.Task;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -35,8 +36,16 @@ public class TaskExecuter {
     public ArrayList<Task> tasks;
     public Bot bot;
     
-    public TaskExecuter(){
+    public TaskExecuter(String path) throws IOException{
+        bot = new Bot();
         
+        tasks = TaskParser.parseDocument(path);
+    }
+    
+    public void start(){
+        for(Task task : tasks){
+            task.execute(bot);
+        }
     }
     
 }

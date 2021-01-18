@@ -71,7 +71,11 @@ public class Bot {
     BufferedImage bufImg;
     Rectangle rect;
 
-    void initialize() {
+    public Bot(){
+        initialize();
+    }
+    
+    private void initialize() {
         grEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
         grDevice = grEnv.getDefaultScreenDevice();
         updateScreenInfo();
