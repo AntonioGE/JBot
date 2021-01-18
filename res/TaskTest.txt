@@ -1,0 +1,5 @@
+# Esto es un comentario
+DELAY 500
+GOTO 20 40
+SETDELAY 100
+fdafdsa
