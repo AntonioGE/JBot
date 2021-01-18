@@ -21,43 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
+import jbot.bot.Bot;
 
 /**
  *
  * @author ANTONIO
  */
-public class Type extends Task{
+public class Goto extends Task{
 
-    public static final String tag = "TYPE";
-    public String text;
+    public static final String tag = "GOTO";
+    public int x, y;
     
-    public Type(String text){
-        this.text = text;
+    public Goto(int x, int y){
+        this.x = x;
+        this.y = y;
     }
     
-    public Type(String[] sCmd){
-        text = "";
-        for(int i = 1; i < sCmd.length; i++){
-            text += sCmd[i] + " ";
-        }
+    public Goto(String[] sCmd){
+        x = Integer.parseInt(sCmd[1]);
+        y = Integer.parseInt(sCmd[2]);
     }
     
     @Override
     public void execute(Bot bot) {
-        bot.combinePress(17, 65);
-        bot.sleep();
-        bot.manuPress(8);
-        bot.sleep();
-
-        bot.toClippboard(text);
-        bot.sleep();
-        bot.combinePress(17, 86);
+        bot.goToXY(x, y);
         bot.sleep();
     }
-    
-    
     
 }

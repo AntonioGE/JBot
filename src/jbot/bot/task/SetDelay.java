@@ -21,46 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
-import botaire.utils.Utils;
-import java.awt.AWTException;
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import jbot.bot.Bot;
 
 /**
  *
  * @author ANTONIO
  */
-public class FindWindow extends Task {
+public class SetDelay extends Task{
 
-    public String imageName;
-    public int xOffset, yOffset;
+    public static final String tag = "SETDELAY";
+    public int delay;
     
-    public FindWindow(String[] sCmd){
-        this.imageName = sCmd[1];
-        this.xOffset = Integer.parseInt(sCmd[2]);
-        this.yOffset = Integer.parseInt(sCmd[3]);
+    public SetDelay(String[] sCmd){
+        delay = Integer.parseInt(sCmd[1]);
     }
     
     @Override
     public void execute(Bot bot) {
-        try {
-            BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "/images/" + imageName));
-            BufferedImage screenImg = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-            
-            Utils.findImage(screenImg, img, 0.05f);
-        } catch (IOException | AWTException ex) {
-        
-        }
+        bot.delay = delay;
     }
     
 }

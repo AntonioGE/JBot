@@ -21,17 +21,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
-
+import jbot.bot.Bot;
+import jbot.utils.Utils;
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author ANTONIO
  */
-public abstract class Task {
-  
-    public abstract void execute(Bot bot);
+public class FindWindow extends Task {
+
+    public String imageName;
+    public int xOffset, yOffset;
+    
+    public FindWindow(String[] sCmd){
+        this.imageName = sCmd[1];
+        this.xOffset = Integer.parseInt(sCmd[2]);
+        this.yOffset = Integer.parseInt(sCmd[3]);
+    }
+    
+    @Override
+    public void execute(Bot bot) {
+        try {
+            BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "/images/" + imageName));
+            BufferedImage screenImg = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            
+            Utils.findImage(screenImg, img, 0.05f);
+        } catch (IOException | AWTException ex) {
+        
+        }
+    }
     
 }

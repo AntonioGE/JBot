@@ -21,25 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
+import jbot.bot.Bot;
+
 
 /**
  *
  * @author ANTONIO
  */
-public class Goto extends Task{
+public class GotoAndClick extends Task{
 
-    public static final String tag = "GOTO";
+    public static final String tag = "GOTOCLICK";
     public int x, y;
     
-    public Goto(int x, int y){
+    public GotoAndClick(int x, int y){
         this.x = x;
         this.y = y;
     }
     
-    public Goto(String[] sCmd){
+    public GotoAndClick(String[] sCmd){
         x = Integer.parseInt(sCmd[1]);
         y = Integer.parseInt(sCmd[2]);
     }
@@ -48,6 +49,10 @@ public class Goto extends Task{
     public void execute(Bot bot) {
         bot.goToXY(x, y);
         bot.sleep();
+        bot.click();
+        bot.sleep();
     }
+    
+    
     
 }

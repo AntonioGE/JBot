@@ -21,30 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot;
+package jbot;
 
-import botaire.bot.task.Task;
+import jbot.bot.TaskParser;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author ANTONIO
  */
-public class TaskExecuter {
-    
-    public ArrayList<Task> tasks;
-    public Bot bot;
-    
-    public TaskExecuter(String path) throws IOException{
-        bot = new Bot();
-        
-        tasks = TaskParser.parseDocument(path);
-    }
-    
-    public void start(){
-        for(Task task : tasks){
-            task.execute(bot);
+public class JBot {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        try {
+            // TODO code application logic here
+            TaskParser.parseDocument(System.getProperty("user.dir") + "/res/TaskTest.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(JBot.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

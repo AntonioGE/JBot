@@ -21,33 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
+import jbot.bot.Bot;
 
 /**
  *
  * @author ANTONIO
  */
-public class Delay extends Task{
+public class Type extends Task{
 
-    public static final String tag = "DELAY";
-    public int delay = 0;
+    public static final String tag = "TYPE";
+    public String text;
     
-    public Delay(String[] sCmd){
-        if(sCmd.length > 1){
-            delay = Integer.parseInt(sCmd[1]);
-        }
+    public Type(String text){
+        this.text = text;
     }
     
+    public Type(String[] sCmd){
+        text = "";
+        for(int i = 1; i < sCmd.length; i++){
+            text += sCmd[i] + " ";
+        }
+    }
     
     @Override
     public void execute(Bot bot) {
-        if(delay != 0){
-            bot.sleep(delay);
-        }else{
-            bot.sleep();
-        }
+        bot.combinePress(17, 65);
+        bot.sleep();
+        bot.manuPress(8);
+        bot.sleep();
+
+        bot.toClippboard(text);
+        bot.sleep();
+        bot.combinePress(17, 86);
+        bot.sleep();
     }
+    
+    
     
 }

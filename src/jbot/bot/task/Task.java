@@ -21,26 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
+import jbot.bot.Bot;
+
 
 /**
  *
  * @author ANTONIO
  */
-public class SetDelay extends Task{
-
-    public static final String tag = "SETDELAY";
-    public int delay;
-    
-    public SetDelay(String[] sCmd){
-        delay = Integer.parseInt(sCmd[1]);
-    }
-    
-    @Override
-    public void execute(Bot bot) {
-        bot.delay = delay;
-    }
+public abstract class Task {
+  
+    public abstract void execute(Bot bot);
     
 }

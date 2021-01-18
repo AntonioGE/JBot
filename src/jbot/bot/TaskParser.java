@@ -21,14 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot;
+package jbot.bot;
 
-import botaire.bot.task.Delay;
-import botaire.bot.task.Goto;
-import botaire.bot.task.GotoAndClick;
-import botaire.bot.task.SetDelay;
-import botaire.bot.task.Task;
-import botaire.bot.task.Type;
+import jbot.bot.task.Delay;
+import jbot.bot.task.Goto;
+import jbot.bot.task.GotoAndClick;
+import jbot.bot.task.SetDelay;
+import jbot.bot.task.Task;
+import jbot.bot.task.Type;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

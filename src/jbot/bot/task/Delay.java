@@ -21,38 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.bot.task;
+package jbot.bot.task;
 
-import botaire.bot.Bot;
-
+import jbot.bot.Bot;
 
 /**
  *
  * @author ANTONIO
  */
-public class GotoAndClick extends Task{
+public class Delay extends Task{
 
-    public static final String tag = "GOTOCLICK";
-    public int x, y;
+    public static final String tag = "DELAY";
+    public int delay = 0;
     
-    public GotoAndClick(int x, int y){
-        this.x = x;
-        this.y = y;
+    public Delay(String[] sCmd){
+        if(sCmd.length > 1){
+            delay = Integer.parseInt(sCmd[1]);
+        }
     }
     
-    public GotoAndClick(String[] sCmd){
-        x = Integer.parseInt(sCmd[1]);
-        y = Integer.parseInt(sCmd[2]);
-    }
     
     @Override
     public void execute(Bot bot) {
-        bot.goToXY(x, y);
-        bot.sleep();
-        bot.click();
-        bot.sleep();
+        if(delay != 0){
+            bot.sleep(delay);
+        }else{
+            bot.sleep();
+        }
     }
-    
-    
     
 }

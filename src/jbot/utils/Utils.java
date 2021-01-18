@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package botaire.utils;
+package jbot.utils;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
