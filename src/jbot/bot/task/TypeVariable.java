@@ -21,33 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package jbot.bot;
+package jbot.bot.task;
 
-import jbot.bot.task.Task;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import jbot.bot.Bot;
+import jbot.bot.TaskExecuter;
 
 /**
  *
  * @author ANTONIO
  */
-public class TaskExecuter {
+public class TypeVariable extends Task{
+
+    public static final String tag = "TYPEVAR";
+    public String varName;
     
-    public HashMap<String, String> variables;
-    public ArrayList<Task> tasks;
-    public Bot bot;
-    
-    public TaskExecuter(String path) throws IOException{
-        bot = new Bot();
-        
-        tasks = TaskParser.parseDocument(path);
+    public TypeVariable(String varName){
+        this.varName = varName;
     }
     
-    public void start(){
-        for(Task task : tasks){
-            task.execute(this);
-        }
+    public TypeVariable(String[] sCmd){
+        varName = sCmd[1];
+    }
+    
+    @Override
+    public void execute(TaskExecuter exe) {
+        exe.bot.combinePress(17, 65);
+        exe.bot.sleep();
+        exe.bot.manuPress(8);
+        exe.bot.sleep();
+
+        exe.bot.toClippboard(exe.variables.get(varName));
+        exe.bot.sleep();
+        exe.bot.combinePress(17, 86);
+        exe.bot.sleep();
     }
     
 }

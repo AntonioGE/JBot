@@ -24,6 +24,7 @@
 package jbot.bot.task;
 
 import jbot.bot.Bot;
+import jbot.bot.TaskExecuter;
 
 /**
  *
@@ -45,9 +46,9 @@ public class Goto extends Task{
     }
     
     @Override
-    public void execute(Bot bot) {
-        bot.goToXY(x, y);
-        bot.sleep();
+    public void execute(TaskExecuter exe) {
+        exe.bot.goToXY(x, y);
+        exe.bot.sleep();
     }
     
 }

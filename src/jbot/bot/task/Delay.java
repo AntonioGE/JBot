@@ -24,6 +24,7 @@
 package jbot.bot.task;
 
 import jbot.bot.Bot;
+import jbot.bot.TaskExecuter;
 
 /**
  *
@@ -42,11 +43,11 @@ public class Delay extends Task{
     
     
     @Override
-    public void execute(Bot bot) {
+    public void execute(TaskExecuter exe) {
         if(delay != 0){
-            bot.sleep(delay);
+            exe.bot.sleep(delay);
         }else{
-            bot.sleep();
+            exe.bot.sleep();
         }
     }
     

@@ -24,6 +24,7 @@
 package jbot.bot.task;
 
 import jbot.bot.Bot;
+import jbot.bot.TaskExecuter;
 
 
 /**
@@ -32,6 +33,6 @@ import jbot.bot.Bot;
  */
 public abstract class Task {
   
-    public abstract void execute(Bot bot);
+    public abstract void execute(TaskExecuter exe);
     
 }

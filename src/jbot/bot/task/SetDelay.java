@@ -24,6 +24,7 @@
 package jbot.bot.task;
 
 import jbot.bot.Bot;
+import jbot.bot.TaskExecuter;
 
 /**
  *
@@ -39,8 +40,8 @@ public class SetDelay extends Task{
     }
     
     @Override
-    public void execute(Bot bot) {
-        bot.delay = delay;
+    public void execute(TaskExecuter exe) {
+        exe.bot.delay = delay;
     }
     
 }

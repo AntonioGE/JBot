@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import jbot.bot.TaskExecuter;
 
 /**
  *
@@ -52,7 +53,7 @@ public class FindWindow extends Task {
     }
     
     @Override
-    public void execute(Bot bot) {
+    public void execute(TaskExecuter exe) {
         try {
             BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "/images/" + imageName));
             BufferedImage screenImg = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));

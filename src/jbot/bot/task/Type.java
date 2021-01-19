@@ -24,6 +24,7 @@
 package jbot.bot.task;
 
 import jbot.bot.Bot;
+import jbot.bot.TaskExecuter;
 
 /**
  *
@@ -46,16 +47,16 @@ public class Type extends Task{
     }
     
     @Override
-    public void execute(Bot bot) {
-        bot.combinePress(17, 65);
-        bot.sleep();
-        bot.manuPress(8);
-        bot.sleep();
+    public void execute(TaskExecuter exe) {
+        exe.bot.combinePress(17, 65);
+        exe.bot.sleep();
+        exe.bot.manuPress(8);
+        exe.bot.sleep();
 
-        bot.toClippboard(text);
-        bot.sleep();
-        bot.combinePress(17, 86);
-        bot.sleep();
+        exe.bot.toClippboard(text);
+        exe.bot.sleep();
+        exe.bot.combinePress(17, 86);
+        exe.bot.sleep();
     }
     
     
