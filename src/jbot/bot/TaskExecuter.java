@@ -27,6 +27,7 @@ import jbot.bot.task.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  *
@@ -38,8 +39,12 @@ public class TaskExecuter {
     public ArrayList<Task> tasks;
     public Bot bot;
     
-    public TaskExecuter(String path) throws IOException{
+    public TaskExecuter(String path, Set<String> variableNames) throws IOException{
         bot = new Bot();
+        
+        variableNames.forEach((s) -> {
+            variables.put(s, "");
+        });
         
         tasks = TaskParser.parseDocument(path);
     }

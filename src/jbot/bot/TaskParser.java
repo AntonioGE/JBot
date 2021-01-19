@@ -41,6 +41,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Stream;
+import jbot.bot.task.TypeVariable;
 
 /**
  *
@@ -55,6 +56,8 @@ public class TaskParser {
             put(Delay.tag, Delay.class);
             put(SetDelay.tag, SetDelay.class);
             put(Type.tag, Type.class);
+            put(TypeVariable.tag, TypeVariable.class);
+            
         }
     };
 
