@@ -41,9 +41,11 @@ public class Type extends Task{
     
     public Type(String[] sCmd){
         text = "";
-        for(int i = 1; i < sCmd.length; i++){
+        int i;
+        for( i = 1; i < sCmd.length - 1; i++){
             text += sCmd[i] + " ";
         }
+        text += sCmd[i];
     }
     
     @Override

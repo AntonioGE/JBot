@@ -41,12 +41,18 @@ public class SelectWindow extends Task{
     }
     
     public SelectWindow(String[] sCmd){
-        this.winName = sCmd[1];
+        this.winName = "";
+        int i;
+        for(i = 1; i < sCmd.length - 1; i++){
+            winName += sCmd[i] + " ";
+        }
+        winName += sCmd[i];
     }
     
     @Override
     public void execute(TaskExecuter exe) {
         selectWindow(winName);
+        System.out.println(winName);
     }
     
     private boolean selectWindow(String windowName) {
