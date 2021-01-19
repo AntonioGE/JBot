@@ -21,39 +21,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package jbot.bot;
+package jbot.bot.task;
 
-import jbot.bot.task.Task;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
+import com.sun.jna.platform.win32.WinDef;
+import jbot.bot.TaskExecuter;
+import jbot.utils.User32;
 
 /**
  *
  * @author ANTONIO
  */
-public class TaskExecuter {
+public class SelectWindow extends Task{
+
+    public static final String tag = "SELECTWIN";
+    public String winName;
     
-    public HashMap<String, String> variables;
-    public ArrayList<Task> tasks;
-    public Bot bot;
-    
-    public TaskExecuter(String path, Set<String> variableNames) throws IOException{
-        bot = new Bot();
-        
-        variables = new HashMap<>(); 
-        variableNames.forEach((s) -> {
-            variables.put(s, "");
-        });
-        
-        tasks = TaskParser.parseDocument(path);
+    public SelectWindow(String winName){
+        this.winName = winName;
     }
     
-    public void start(){
-        for(Task task : tasks){
-            task.execute(this);
+    public SelectWindow(String[] sCmd){
+        this.winName = sCmd[1];
+    }
+    
+    @Override
+    public void execute(TaskExecuter exe) {
+        selectWindow(winName);
+    }
+    
+    private boolean selectWindow(String windowName) {
+        User32 user32 = User32.instance;
+        WinDef.HWND hWnd = user32.FindWindow(null, windowName); // Sets focus to my opened 'Downloads' folder
+        if (hWnd != null) {
+            user32.ShowWindow(hWnd, User32.SW_SHOW);
+            user32.SetForegroundWindow(hWnd);
+            return true;
         }
+        return false;
     }
-    
 }
