@@ -44,6 +44,7 @@ import jbot.bot.TaskExecuter;
  */
 public class FindWindow extends Task {
 
+    public static final String tag = "FINDWIN";
     public String imageName;
     public int xOffset, yOffset;
 
