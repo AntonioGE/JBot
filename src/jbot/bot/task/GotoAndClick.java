@@ -47,11 +47,13 @@ public class GotoAndClick extends Task{
     }
     
     @Override
-    public void execute(TaskExecuter exe) {
+    public int execute(TaskExecuter exe) {
         exe.bot.goToXY(x, y);
         exe.bot.sleep();
         exe.bot.click();
         exe.bot.sleep();
+        
+        return Task.RESULT_OK;
     }
     
     

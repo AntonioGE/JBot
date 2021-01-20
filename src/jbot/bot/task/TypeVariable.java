@@ -44,7 +44,7 @@ public class TypeVariable extends Task{
     }
     
     @Override
-    public void execute(TaskExecuter exe) {
+    public int execute(TaskExecuter exe) {
         exe.bot.combinePress(17, 65);
         exe.bot.sleep();
         exe.bot.manuPress(8);
@@ -54,6 +54,8 @@ public class TypeVariable extends Task{
         exe.bot.sleep();
         exe.bot.combinePress(17, 86);
         exe.bot.sleep();
+        
+        return Task.RESULT_OK;
     }
     
 }

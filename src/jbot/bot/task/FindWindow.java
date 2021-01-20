@@ -55,7 +55,7 @@ public class FindWindow extends Task {
     }
 
     @Override
-    public void execute(TaskExecuter exe) {
+    public int execute(TaskExecuter exe) {
         try {
             BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "/images/" + imageName));
             BufferedImage screenImg = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
@@ -64,10 +64,12 @@ public class FindWindow extends Task {
             if (imgXY != null) {
                 exe.bot.winX = imgXY.x + xOffset;
                 exe.bot.winY = imgXY.y + yOffset;
+                return Task.RESULT_OK;
+            } else {
+                return Task.RESULT_ERROR;
             }
-
         } catch (IOException | AWTException ex) {
-
+            return Task.RESULT_ERROR;
         }
     }
 

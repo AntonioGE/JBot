@@ -50,9 +50,13 @@ public class SelectWindow extends Task{
     }
     
     @Override
-    public void execute(TaskExecuter exe) {
-        selectWindow(winName);
+    public int execute(TaskExecuter exe) {
         System.out.println(winName);
+        if(selectWindow(winName)){
+            return Task.RESULT_OK;
+        }else{
+            return Task.RESULT_ERROR;
+        }
     }
     
     private boolean selectWindow(String windowName) {

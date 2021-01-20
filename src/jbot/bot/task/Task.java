@@ -33,6 +33,9 @@ import jbot.bot.TaskExecuter;
  */
 public abstract class Task {
   
-    public abstract void execute(TaskExecuter exe);
+    public static final int RESULT_OK = 0;
+    public static final int RESULT_ERROR = 1;
+    
+    public abstract int execute(TaskExecuter exe);
     
 }

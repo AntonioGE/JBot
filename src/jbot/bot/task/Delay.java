@@ -43,12 +43,13 @@ public class Delay extends Task{
     
     
     @Override
-    public void execute(TaskExecuter exe) {
+    public int execute(TaskExecuter exe) {
         if(delay != 0){
             exe.bot.sleep(delay);
         }else{
             exe.bot.sleep();
         }
+        return Task.RESULT_OK;
     }
     
 }

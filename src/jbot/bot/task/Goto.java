@@ -46,9 +46,11 @@ public class Goto extends Task{
     }
     
     @Override
-    public void execute(TaskExecuter exe) {
+    public int execute(TaskExecuter exe) {
         exe.bot.goToXY(x, y);
         exe.bot.sleep();
+        
+        return Task.RESULT_OK;
     }
     
 }

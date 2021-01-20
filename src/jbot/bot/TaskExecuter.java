@@ -35,6 +35,9 @@ import java.util.Set;
  */
 public class TaskExecuter {
     
+    public static final int RESULT_OK = 0;
+    public static final int RESULT_ERROR = 1;
+    
     public HashMap<String, String> variables;
     public ArrayList<Task> tasks;
     public Bot bot;
@@ -58,10 +61,13 @@ public class TaskExecuter {
         tasks = TaskParser.parseDocument(path);
     }
     
-    public void start(){
+    public int start(){
         for(Task task : tasks){
-            task.execute(this);
+            if(task.execute(this) == Task.RESULT_ERROR){
+                return RESULT_ERROR;
+            }
         }
+        return RESULT_OK;
     }
     
 }

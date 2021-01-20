@@ -40,8 +40,10 @@ public class SetDelay extends Task{
     }
     
     @Override
-    public void execute(TaskExecuter exe) {
+    public int execute(TaskExecuter exe) {
         exe.bot.delay = delay;
+        
+        return Task.RESULT_OK;
     }
     
 }
