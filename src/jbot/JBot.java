@@ -25,8 +25,11 @@ package jbot;
 
 import jbot.bot.TaskParser;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jbot.bot.TaskExecuter;
 
 /**
  *
@@ -40,7 +43,14 @@ public class JBot {
     public static void main(String[] args) {
         try {
             // TODO code application logic here
-            TaskParser.parseDocument(System.getProperty("user.dir") + "/res/TaskTest.txt");
+            
+            Set set = new HashSet<>();
+            set.add("test");
+            
+            TaskExecuter exe = new TaskExecuter(System.getProperty("user.dir") + "/res/TaskTest.txt",
+            set);
+            exe.start();
+            
         } catch (IOException ex) {
             Logger.getLogger(JBot.class.getName()).log(Level.SEVERE, null, ex);
         }

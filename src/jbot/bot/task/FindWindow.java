@@ -26,6 +26,7 @@ package jbot.bot.task;
 import jbot.bot.Bot;
 import jbot.utils.Utils;
 import java.awt.AWTException;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -45,23 +46,28 @@ public class FindWindow extends Task {
 
     public String imageName;
     public int xOffset, yOffset;
-    
-    public FindWindow(String[] sCmd){
+
+    public FindWindow(String[] sCmd) {
         this.imageName = sCmd[1];
         this.xOffset = Integer.parseInt(sCmd[2]);
         this.yOffset = Integer.parseInt(sCmd[3]);
     }
-    
+
     @Override
     public void execute(TaskExecuter exe) {
         try {
             BufferedImage img = ImageIO.read(new File(System.getProperty("user.dir") + "/images/" + imageName));
             BufferedImage screenImg = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-            
-            Utils.findImage(screenImg, img, 0.05f);
+
+            Point imgXY = Utils.findImage(screenImg, img, 0.05f);
+            if (imgXY != null) {
+                exe.bot.winX = imgXY.x + xOffset;
+                exe.bot.winY = imgXY.y + yOffset;
+            }
+
         } catch (IOException | AWTException ex) {
-        
+
         }
     }
-    
+
 }

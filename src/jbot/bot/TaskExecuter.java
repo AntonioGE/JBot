@@ -50,6 +50,14 @@ public class TaskExecuter {
         tasks = TaskParser.parseDocument(path);
     }
     
+    public TaskExecuter(String path) throws IOException{
+        bot = new Bot();
+        
+        variables = new HashMap<>(); 
+        
+        tasks = TaskParser.parseDocument(path);
+    }
+    
     public void start(){
         for(Task task : tasks){
             task.execute(this);
