@@ -592,11 +592,12 @@ public class Bot {
         MYROBOT.keyRelease(code);
     }
 
-    public void manuPress(int code, int timePressed){
+    public void manuPress(int code, int charsToRemove){
         MYROBOT.keyRelease(16);
-        MYROBOT.keyPress(code);
-        sleep(timePressed);
-        MYROBOT.keyRelease(code);
+        for(int i = 0; i < charsToRemove; i++){
+            MYROBOT.keyPress(code);
+            MYROBOT.keyRelease(code);
+        }
     }
     
     void manuPressSHIFTED(int code) {

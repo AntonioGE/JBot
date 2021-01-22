@@ -49,7 +49,7 @@ public class TypeVariable extends Task{
         exe.bot.sleep();
         exe.bot.manuPress(8);
         exe.bot.sleep();*/
-        exe.bot.manuPress(8, 1000);
+        exe.bot.manuPress(8, 500);
         exe.bot.sleep();
 
         exe.bot.toClippboard(exe.variables.get(varName));
