@@ -592,6 +592,13 @@ public class Bot {
         MYROBOT.keyRelease(code);
     }
 
+    public void manuPress(int code, int timePressed){
+        MYROBOT.keyRelease(16);
+        MYROBOT.keyPress(code);
+        sleep(timePressed);
+        MYROBOT.keyRelease(code);
+    }
+    
     void manuPressSHIFTED(int code) {
         MYROBOT.keyPress(16);
         MYROBOT.keyPress(code);
