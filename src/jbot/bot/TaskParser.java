@@ -29,10 +29,7 @@ import jbot.bot.task.GotoAndClick;
 import jbot.bot.task.SetDelay;
 import jbot.bot.task.Task;
 import jbot.bot.task.Type;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
@@ -42,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Stream;
 import jbot.bot.task.FindWindow;
+import jbot.bot.task.Press;
 import jbot.bot.task.SelectWindow;
 import jbot.bot.task.TypeVariable;
 
@@ -61,6 +59,7 @@ public class TaskParser {
             put(TypeVariable.tag, TypeVariable.class);
             put(SelectWindow.tag, SelectWindow.class);
             put(FindWindow.tag, FindWindow.class);
+            put(Press.tag, Press.class);
         }
     };
 
