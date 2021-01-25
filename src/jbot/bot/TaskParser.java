@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Stream;
 import jbot.bot.task.FindWindow;
+import jbot.bot.task.If;
 import jbot.bot.task.Press;
 import jbot.bot.task.SelectWindow;
 import jbot.bot.task.TypeVariable;
@@ -60,6 +61,7 @@ public class TaskParser {
             put(SelectWindow.tag, SelectWindow.class);
             put(FindWindow.tag, FindWindow.class);
             put(Press.tag, Press.class);
+            put(If.tag, If.class);
         }
     };
 

@@ -21,56 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package jbot.bot;
+package jbot.bot.task;
 
-import jbot.bot.task.Task;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
+import jbot.bot.TaskExecuter;
 
 /**
  *
  * @author ANTONIO
  */
-public class TaskExecuter {
+public class If extends Task{
+
+    public static final String tag = "IF";
+    public String varName;
+    public String comparisonOperator;
+    public String value;
     
-    public static final int RESULT_OK = 0;
-    public static final int RESULT_ERROR = 1;
-    
-    public HashMap<String, String> variables;
-    public ArrayList<Task> tasks;
-    public Bot bot;
-    
-    public int currentTaskIndex;
-    
-    public TaskExecuter(String path, Set<String> variableNames) throws IOException{
-        bot = new Bot();
-        
-        variables = new HashMap<>(); 
-        variableNames.forEach((s) -> {
-            variables.put(s, "");
-        });
-        
-        tasks = TaskParser.parseDocument(path);
+    public If(String[] sCmd){
+        varName = sCmd[1];
+        comparisonOperator = sCmd[2];
+        value = sCmd[3];
     }
     
-    public TaskExecuter(String path) throws IOException{
-        bot = new Bot();
-        
-        variables = new HashMap<>(); 
-        
-        tasks = TaskParser.parseDocument(path);
-    }
-    
-    public int start(){
-        currentTaskIndex = 0;
-        for(int i = 0; i < tasks.size(); i++){
-            Task task = tasks.get(i);
-            if(task.execute(this) == Task.RESULT_ERROR){
-                return RESULT_ERROR;
-            }
+    @Override
+    public int execute(TaskExecuter exe) {//TODO: Add more comparison cases
+        switch(comparisonOperator){
+            case "==":
+                if(exe.variables.get(varName).equals(value)){
+                    return RESULT_OK;
+                }
+                break;
+            default:
+                break;
         }
+        
+        exe.currentTaskIndex++;
         return RESULT_OK;
     }
     
