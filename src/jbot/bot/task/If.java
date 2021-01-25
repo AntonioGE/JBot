@@ -46,6 +46,7 @@ public class If extends Task{
     public int execute(TaskExecuter exe) {//TODO: Add more comparison cases
         switch(comparisonOperator){
             case "==":
+                System.out.println(exe.variables.get(varName) + " " + value);
                 if(exe.variables.get(varName).equals(value)){
                     return RESULT_OK;
                 }

@@ -64,9 +64,8 @@ public class TaskExecuter {
     }
     
     public int start(){
-        currentTaskIndex = 0;
-        for(int i = 0; i < tasks.size(); i++){
-            Task task = tasks.get(i);
+        for(currentTaskIndex = 0; currentTaskIndex < tasks.size(); currentTaskIndex++){
+            Task task = tasks.get(currentTaskIndex);
             if(task.execute(this) == Task.RESULT_ERROR){
                 return RESULT_ERROR;
             }
