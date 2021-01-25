@@ -43,17 +43,16 @@ public class JBot {
     public static void main(String[] args) {
         try {
             // TODO code application logic here
-            
+
             Set set = new HashSet<>();
             set.add("test");
-            
-            TaskExecuter exe = new TaskExecuter(System.getProperty("user.dir") + "/res/TaskTest.txt",
-            set);
-            exe.start();
-            
+
+            TaskExecuter exe = new TaskExecuter(System.getProperty("user.dir") + "/res/TaskTest.txt", set);
+            //exe.start();
+
         } catch (IOException ex) {
             Logger.getLogger(JBot.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

@@ -40,7 +40,7 @@ public class Press extends Task{
         }catch(NumberFormatException ex){
             switch(sCmd[1].toUpperCase()){
                 case "ENTER":
-                    keyCode = 13;
+                    keyCode = 10;
                     break;
                 case "ESC":
                     keyCode = 27;
@@ -59,6 +59,7 @@ public class Press extends Task{
     
     @Override
     public int execute(TaskExecuter exe) {
+        System.out.println(keyCode);
         exe.bot.manuPress(keyCode);
         exe.bot.sleep();
         return RESULT_OK;
